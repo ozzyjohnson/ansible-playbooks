@@ -1,0 +1,36 @@
+---
+# This role configures the Ceph quickstart server.
+
+- name: create basic ceph config
+  template: src=roles/ceph-qs-server/templates/ceph.conf.j2 dest=/etc/ceph/ceph.conf
+
+- name: create daemon directories
+  file: path=$item state=directory
+  with_items:
+   - "/var/lib/ceph/osd/ceph-0"
+   - "/var/lib/ceph/osd/ceph-1"
+   - "/var/lib/ceph/mon/ceph-a"
+   - "/var/lib/ceph/mds/ceph-a"
+
+- name: deploy ceph and generate keys
+  command: mkcephfs -a -c /etc/ceph/ceph.conf -k ceph.keyring chdir=/etc/ceph creates=/var/lib/ceph/osd/ceph-0/fsid
+
+- name: start ceph
+  service: name=ceph state=started
+
+# There seems to be a bug with fetch behavior under sudo.
+# Using shell copy, perm change, fetch, delete as a workaround.
+# See: https://github.com/ansible/ansible/issues/3111
+
+- name: copy ceph.keyring to /tmp
+  shell: cp /etc/ceph/ceph.keyring /tmp
+
+- name: change ceph.keyring permissions
+  shell: chmod o+r /tmp/ceph.keyring 
+
+- name: fetch ceph.keyring from the server
+  fetch: src=/tmp/ceph.keyring dest=/tmp/ flat=yes
+
+- name: remove ceph keyring in tmp
+  file: path=/tmp/ceph.keyring state=absent
+

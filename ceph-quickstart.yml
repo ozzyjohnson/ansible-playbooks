@@ -1,0 +1,23 @@
+---
+# Deploy the Ceph quickstart roles.
+
+# Common configuration
+
+- hosts: all
+  sudo: yes
+  roles:
+  - ceph-qs-common
+
+# Configure the quickstart server node.
+
+- hosts: ceph-server
+  sudo: yes
+  roles: 
+  - ceph-qs-server
+
+# Configure the quickstart client node.
+
+- hosts: ceph-client
+  sudo: yes
+  roles:
+  - ceph-qs-client

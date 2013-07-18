@@ -1,0 +1,8 @@
+---
+# This role configures the Ceph quickstart client.
+
+- name: create basic ceph client config
+  template: src=roles/ceph-qs-client/templates/ceph.conf.j2 dest=/etc/ceph/ceph.conf
+
+- name: add ceph.keyring to the client
+  copy: src=/tmp/ceph.keyring dest=/etc/ceph/ceph.keyring mode=644 backup=yes

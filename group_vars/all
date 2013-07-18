@@ -1,0 +1,8 @@
+---
+# Variables used to install Ceph on both nodes.
+
+lsb_codename: ${ansible_lsb.codename}
+ceph_key: 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc'
+ceph_repo: 'deb http://ceph.com/debian/ $lsb_codename main'
+ceph_list: '/etc/apt/sources.list.d/ceph.list'
+

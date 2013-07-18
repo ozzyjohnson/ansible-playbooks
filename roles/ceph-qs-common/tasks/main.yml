@@ -1,0 +1,16 @@
+---
+# This role adds ceph repos and installs packages on both nodes.
+
+- name: add ceph apt key
+  apt_key: url=$ceph_key state=present
+
+# Bug in apt-add-repository preclude the use of apt_repository here.
+# See: https://bugs.launchpad.net/ubuntu/+source/software-properties/+bug/987264
+- name: add ceph repo
+  shell: echo $ceph_repo > $ceph_list creates=$ceph_list
+
+- name: apt-get update
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: install ceph
+  apt: pkg=ceph state=present 
