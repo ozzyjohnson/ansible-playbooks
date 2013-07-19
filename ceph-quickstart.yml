@@ -3,7 +3,7 @@
 
 # Common configuration
 
-- hosts: all
+- hosts: ceph-quickstart
   sudo: yes
   roles:
   - ceph-qs-common
