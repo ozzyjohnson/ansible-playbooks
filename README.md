@@ -36,9 +36,9 @@ Which should return the following:
 Background
 ----------
 
-I'd been wanting to get my feet wet with Ansible, Ceph and Github, this is the first result. There's surely room for improvement.
+I've been wanting to get my feet wet with Ansible, Ceph and Github, this is the first result. There's surely room for improvement.
 
-Building these playbooks was an interesting learning experience and exposed me a number of ansible modules and features.
+Building these playbooks was an interesting learning experience and exposed me to a number of ansible modules and features.
 
 **Modules**
 
