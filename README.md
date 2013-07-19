@@ -9,7 +9,8 @@ Ceph
 
 _"Ceph is a distributed object store and file system designed to provide excellent performance, reliability and scalability."_
 
-[Ceph Architecture](http://ceph.com/docs/master/architecture/) (ceph.com)
+* [Ceph Architecture](http://ceph.com/docs/master/architecture/) (ceph.com)
+* [Ceph on Github](https://github.com/ceph/ceph) (github.com)
 
 Introduction
 ------------
