@@ -4,6 +4,13 @@ Ceph 5-Minute Quickstart Playbook
 * Requires Ansible 1.2
 * Expects Ubuntu Server 12.04+
 
+Ceph
+----
+
+_"Ceph is a distributed object store and file system designed to provide excellent performance, reliability and scalability."_
+
+[Ceph Architecture](http://ceph.com/docs/master/architecture/) (ceph.com)
+
 Introduction
 ------------
 
